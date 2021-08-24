@@ -14,6 +14,7 @@ import br.edu.infnet.bootaluno.modelo.Aluno;
 import br.edu.infnet.bootaluno.service.AlunoService;
 
 @Controller
+@RequestMapping(value = "/aluno")
 public class AlunoController {
 
 	@Autowired
@@ -21,7 +22,7 @@ public class AlunoController {
 	
 	@RequestMapping(value = "/cadastro",  method = RequestMethod.GET)
 	public String cadastro() {
-		return "form";
+		return "aluno/form";
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
@@ -37,7 +38,7 @@ public class AlunoController {
 	public String listaAlunos(Model model) {
 		List<Aluno> alunos =  alunoService.listAll();
 		model.addAttribute("alunos", alunos);
-		return "index";
+		return "aluno/index";
 	}
 	
 	
@@ -47,10 +48,8 @@ public class AlunoController {
 		if(byId.isPresent()) {
 			model.addAttribute("aluno", byId.get());
 		}
-		return "edit";
+		return "aluno/edit";
 	}
-	
-	
 	
 	
 }

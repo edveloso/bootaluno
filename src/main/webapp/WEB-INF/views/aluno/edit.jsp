@@ -36,7 +36,7 @@
 		<h2>Editar aluno</h2>
 
 
-		<form action='<c:url value="/salvar" /> ' method="post">
+		<form action='<c:url value="/aluno/salvar" /> ' method="post">
 
 			<input type="hidden" name="codigo" value="${aluno.codigo}" >
 			

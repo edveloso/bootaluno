@@ -33,11 +33,11 @@
 			<h3>Com springboot</h3>
 		</div>
 
-		<h2>Cadastro de alunos</h2>
+		<h2>Cadastro de turmas</h2>
 
 
 
-		<form action='<c:url value="/aluno/salvar" /> ' method="post">
+		<form action='<c:url value="/turma/salvar" /> ' method="post">
 
 			<div class="form-group">
 			
@@ -49,15 +49,6 @@
 			
 			</div>
 
-			<div class="form-group">
-			
-				<label for="email">Email</label> 
-				
-				<input
-					type="email" class="form-control" id="email"
-					placeholder="informe o email" name="email">
-			
-			</div>
 			
 			 
 			<input type="submit" class="btn btn-primary" value="Salvar" />
