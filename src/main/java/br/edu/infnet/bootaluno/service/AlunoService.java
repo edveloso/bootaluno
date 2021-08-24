@@ -1,5 +1,7 @@
 package br.edu.infnet.bootaluno.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class AlunoService {
 	public void salvar(Aluno aluno) {
 		//aplicar as regras de negócio
 		alunoRepository.save(aluno);
+	}
+
+	public List<Aluno> listAll() {
+		return alunoRepository.findAll();
 	}
 
 }

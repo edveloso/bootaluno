@@ -50,57 +50,24 @@
 			</thead>
 
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Joao</td>
-					<td>joao@gmail.com</td>
-					<td>
-					
-					<a href="#" >
-					    <button class="btn btn-primary" type="button" >Editar</button>
-					</a> 
-					
-					<a href="#">
-					    <button class="btn btn-danger" type="button" >Excluir</button>
-					</a>
-					
-					</td>
-				</tr>
-
-				<tr>
-					<td>2</td>
-					<td>Maria</td>
-					<td>m@gmail.com</td>
-					<td>
-					
-					
-					<a href="#" >
-					    <button class="btn btn-primary" type="button" >Editar</button>
-					</a> 
-					
-					<a href="#">
-					    <button class="btn btn-danger" type="button" >Excluir</button>
-					</a>
-					
-					</td>
-				</tr>
-
-				<tr>
-					<td>3</td>
-					<td>José</td>
-					<td>j@gmail.com</td>
-					<td>
-
-					<a href="#" >
-					    <button class="btn btn-primary" type="button" >Editar</button>
-					</a> 
-					
-					<a href="#">
-					    <button class="btn btn-danger" type="button" >Excluir</button>
-					</a>
-										
-					</td>
-				</tr>
+			  	 <c:forEach var="aluno" items="${alunos}" >   
+						<tr>
+							<td> ${aluno.id}  </td>
+							<td>${aluno.nome}</td>
+							<td>${aluno.email}</td>
+							<td>
+							
+							<a href="#" >
+							    <button class="btn btn-primary" type="button" >Editar</button>
+							</a> 
+							
+							<a href="#">
+							    <button class="btn btn-danger" type="button" >Excluir</button>
+							</a>
+							
+							</td>
+						</tr>
+				</c:forEach>
 
 
 			</tbody>
