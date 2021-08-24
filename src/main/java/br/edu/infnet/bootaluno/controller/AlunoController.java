@@ -1,10 +1,12 @@
 package br.edu.infnet.bootaluno.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,14 +30,24 @@ public class AlunoController {
 		//executar a ação de salvar
 		alunoService.salvar(usuario);
 		
-		return "index";
+		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listaAlunos(Model model) {
 		List<Aluno> alunos =  alunoService.listAll();
 		model.addAttribute("alunos", alunos);
 		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/formedit/{codigo}", method = RequestMethod.GET)
+	public String formEdit(@PathVariable("codigo") Integer codigo, Model model) {
+		Optional<Aluno> byId = alunoService.getById(codigo);
+		if(byId.isPresent()) {
+			model.addAttribute("aluno", byId.get());
+		}
+		return "edit";
 	}
 	
 	

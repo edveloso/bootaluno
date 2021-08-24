@@ -1,6 +1,7 @@
 package br.edu.infnet.bootaluno.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,10 @@ public class AlunoService {
 
 	public List<Aluno> listAll() {
 		return alunoRepository.findAll();
+	}
+
+	public Optional<Aluno> getById(Integer codigo) {
+		return alunoRepository.findById(codigo);
 	}
 
 }
