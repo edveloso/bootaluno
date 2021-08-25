@@ -31,9 +31,9 @@
 
 
 		<div class="d-flex justify-content-between">
-			<h1>Lista de Alunos</h1>
+			<h1>Lista de Turmas</h1>
 			<h3>
-				<a class="btn btn-primary" href='<c:url value="/aluno/cadastro" /> ' > Cadastrar aluno</a>
+				<a class="btn btn-primary" href='<c:url value="/turma/cadastro" /> ' > Cadastrar turma</a>
 			</h3>
 		</div>
 
@@ -43,29 +43,23 @@
 				<tr>
 					<th>Código</th>
 					<th>Nome</th>
-					<th>Email</th>
 					<th>#</th>
 				</tr>
 
 			</thead>
 
 			<tbody>
-			  	 <c:forEach var="aluno" items="${alunos}" >   
+			  	 <c:forEach var="turma" items="${turmas}" >   
 						<tr>
-							<td> ${aluno.codigo}  </td>
-							<td>${aluno.nome}</td>
-							<td>${aluno.email}</td>
+							<td> ${turma.codigo}  </td>
+							<td>${turma.nome}</td>
 							<td>
 							
-							<a href='<c:url value="/aluno/formedit/${aluno.codigo}" />' >
+							<a href='<c:url value="/turma/formedit/${turma.codigo}" />' >
 							    <button class="btn btn-primary" type="button" >Editar</button>
 							</a> 
 							
-							<a href='<c:url value="/aluno/inscricao/${aluno.codigo}" />' >
-							    <button class="btn btn-success" type="button" >Enturmar</button>
-							</a> 
-							
-							<a href='<c:url value="/aluno/delete/${aluno.codigo}" />' >
+							<a href='<c:url value="/turma/delete/${turma.codigo}" />' >
 							    <button class="btn btn-danger" type="button" >Excluir</button>
 							</a>
 							

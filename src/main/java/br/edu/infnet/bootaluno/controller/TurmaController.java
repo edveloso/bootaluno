@@ -10,72 +10,52 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.edu.infnet.bootaluno.modelo.Aluno;
 import br.edu.infnet.bootaluno.modelo.Turma;
-import br.edu.infnet.bootaluno.service.AlunoService;
 import br.edu.infnet.bootaluno.service.TurmaService;
-import net.bytebuddy.matcher.ModifierMatcher.Mode;
 
 @Controller
-@RequestMapping(value = "/aluno")
-public class AlunoController {
+@RequestMapping(value = "/turma")
+public class TurmaController {
 
-	@Autowired
-	private AlunoService alunoService;
-	
 	@Autowired
 	private TurmaService turmaService;
 	
 	@RequestMapping(value = "/cadastro",  method = RequestMethod.GET)
 	public String cadastro() {
-		return "aluno/form";
+		return "turma/form";
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public String salvar(Aluno usuario) {
+	public String salvar(Turma turma) {
 		
 		//executar a ação de salvar
-		alunoService.salvar(usuario);
+		turmaService.salvar(turma);
 		
-		return "redirect:/aluno/";
+		return "redirect:/turma/";
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String listaAlunos(Model model) {
-		List<Aluno> alunos =  alunoService.listAll();
-		model.addAttribute("alunos", alunos);
-		return "aluno/index";
+	public String listaTurmas(Model model) {
+		List<Turma> turmas =  turmaService.listAll();
+		model.addAttribute("turmas", turmas);
+		return "turma/index";
 	}
 	
 	
 	@RequestMapping(value = "/formedit/{codigo}", method = RequestMethod.GET)
 	public String formEdit(@PathVariable("codigo") Integer codigo, Model model) {
-		Optional<Aluno> byId = alunoService.getById(codigo);
+		Optional<Turma> byId = turmaService.getById(codigo);
 		if(byId.isPresent()) {
-			model.addAttribute("aluno", byId.get());
+			model.addAttribute("turma", byId.get());
 		}
-		return "aluno/edit";
+		return "turma/edit";
 	}
-	
-	@RequestMapping(value = "/inscricao/{codigo}", method = RequestMethod.GET)
-	public String enturmar(@PathVariable("codigo") Integer codigo, Model model) {
-		Optional<Aluno> byId = alunoService.getById(codigo);
-		if(byId.isPresent()) {
-			model.addAttribute("aluno", byId.get());
-		}
-		
-		List<Turma> turmas = turmaService.listAll();
-		model.addAttribute("turmas", turmas);
-		
-		return "aluno/inscricao";
-	}
-	
 	
 
 	@RequestMapping(value = "/delete/{codigo}", method = RequestMethod.GET)
 	public String delete(@PathVariable("codigo") Integer codigo) {
-		alunoService.delete(codigo);
-		return "redirect:/aluno/";
+		turmaService.delete(codigo);
+		return "redirect:/turma/";
 	}
 	
 	
