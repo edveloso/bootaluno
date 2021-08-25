@@ -37,7 +37,7 @@
 
 
 
-		<form action='<c:url value="/salvar" /> ' method="post">
+		<form action='<c:url value="/aluno/salvar" /> ' method="post">
 
 			<div class="form-group">
 			
@@ -61,6 +61,13 @@
 			
 			 
 			<input type="submit" class="btn btn-primary" value="Salvar" />
+			
+			<a  class="btn btn-secondary" href='<c:url value="/aluno/" />' > 
+			
+			  	<i class="fa fa-chevron-circle-left" aria-hidder="true" ></i>
+			
+				 Voltar a listagem
+			 </a>
 
 
 		</form>

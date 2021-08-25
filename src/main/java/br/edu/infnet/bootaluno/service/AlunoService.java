@@ -28,4 +28,8 @@ public class AlunoService {
 		return alunoRepository.findById(codigo);
 	}
 
+	public void delete(Integer codigo) {
+		alunoRepository.deleteById(codigo);
+	}
+
 }
