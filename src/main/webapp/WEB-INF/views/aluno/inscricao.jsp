@@ -36,50 +36,72 @@
 		<h2>Inscrição em turma</h2>
 
 
-		<form action='<c:url value="/aluno/salvar" /> ' method="post">
+		<div class="card">
+			<div class="card-header"></div>
+			<div class="card-body">
+				<h5 class="card-title">${aluno.nome }</h5>
+				<p class="card-text">${aluno.email}</p>
+			</div>
+		</div>
 
 
-			<div class="card">
-				<div class="card-header"></div>
-				<div class="card-body">
-					<h5 class="card-title">${aluno.nome }</h5>
-					<p class="card-text">${aluno.email}</p>
+		<p>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Lista de cursos inscritos</h5>
+
+						<table class="table table-striped">
+							<tbody>
+								<c:forEach var="turma" items="${aluno.turmas}">
+									<tr>
+										<td>${turma.codigo}</td>
+										<td>${turma.nome}</td>
+
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+
+
+
+
+					</div>
 				</div>
 			</div>
-
-			<table class="table table-striped">
-
-			<thead>
-				<tr>
-					<th>Código</th>
-					<th>Nome</th>
-					<th>#</th>
-				</tr>
-
-			</thead>
-
-			<tbody>
-			  	 <c:forEach var="turma" items="${turmas}" >   
-						<tr>
-							<td> ${turma.codigo}  </td>
-							<td>${turma.nome}</td>
-							<td>
-							
-							<a href='<c:url value="/turma/formedit/${turma.codigo}" />' >
-							    <button class="btn btn-primary" type="button" >Inscrever</button>
-							</a> 
-							
-							</td>
-						</tr>
-				</c:forEach>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Lista de cursos a se inscrever</h5>
 
 
-			</tbody>
+						<table class="table table-striped">
+							<tbody>
+								<c:forEach var="turma" items="${turmas}">
+									<tr>
+										<td>${turma.codigo}</td>
+										<td>${turma.nome}</td>
+										<td><a
+											href='<c:url value="/aluno/salvarInscricao/${aluno.codigo}/${turma.codigo}" />'>
+												<button class="btn btn-primary" type="button">Inscrever</button>
+										</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 
-		</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-		</form>
+
+
+		
+
 
 	</div>
 

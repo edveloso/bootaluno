@@ -57,6 +57,14 @@ public class AlunoController {
 		return "aluno/edit";
 	}
 	
+	@RequestMapping(value = "/salvarInscricao/{aluno}/{turma}", method = RequestMethod.GET)
+	public String salvarInscricao(@PathVariable("aluno") Integer aluno, @PathVariable("turma") Integer turma,  Model model) {
+		Optional<Aluno> alunoById = alunoService.getById(aluno);
+		Optional<Turma> turmaById = turmaService.getById(turma);
+		alunoService.inscrever(alunoById.get(), turmaById.get());
+		return "redirect:/aluno/";
+	}
+	
 	@RequestMapping(value = "/inscricao/{codigo}", method = RequestMethod.GET)
 	public String enturmar(@PathVariable("codigo") Integer codigo, Model model) {
 		Optional<Aluno> byId = alunoService.getById(codigo);
