@@ -1,8 +1,12 @@
 package br.edu.infnet.bootaluno.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aluno {
@@ -12,6 +16,10 @@ public class Aluno {
 	
 	private String nome;
 	private String email; 
+	
+	@OneToMany()
+	@JoinColumn(name = "aluno_id")
+	private List<Turma> turmas;
 
 	public Aluno() {
 	}
@@ -43,6 +51,14 @@ public class Aluno {
 
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
+	}
+
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
 	}
 	
 }

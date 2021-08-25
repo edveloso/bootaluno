@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.edu.infnet.bootaluno.modelo.Aluno;
+import br.edu.infnet.bootaluno.modelo.Turma;
 import br.edu.infnet.bootaluno.service.AlunoService;
+import br.edu.infnet.bootaluno.service.TurmaService;
 
 @Controller
 @RequestMapping(value = "/aluno")
@@ -19,6 +21,9 @@ public class AlunoController {
 
 	@Autowired
 	private AlunoService alunoService;
+	
+	@Autowired
+	private TurmaService turmaService;
 	
 	@RequestMapping(value = "/cadastro",  method = RequestMethod.GET)
 	public String cadastro() {
@@ -50,6 +55,23 @@ public class AlunoController {
 		}
 		return "aluno/edit";
 	}
+	
+	
+	@RequestMapping(value = "/inscricao/{codigo}", method = RequestMethod.GET)
+	public String inscricao(@PathVariable("codigo") Integer codigo, Model model) {
+		Optional<Aluno> byId = alunoService.getById(codigo);
+		if(byId.isPresent()) {
+			model.addAttribute("aluno", byId.get());
+		}
+		
+		
+		List<Turma> turmas = turmaService.listAll();
+		model.addAttribute("turmas", turmas);
+		
+		return "aluno/inscricao";
+	}
+	
+	
 	
 	
 }

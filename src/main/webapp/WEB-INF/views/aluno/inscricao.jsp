@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
-	
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +17,14 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 
 
 
-	<div class="container">
+	<div id="principal" class="container">
+
 
 		<div class="jumbotron">
 			<h1>
@@ -29,59 +33,56 @@
 			<h3>Com springboot</h3>
 		</div>
 
+		<h2>Inscricao em turma</h2>
 
-		<div class="d-flex justify-content-between">
-			<h1>Lista de Alunos</h1>
-			<h3>
-				<a class="btn btn-primary" href='<c:url value="/aluno/cadastro" /> ' > Cadastrar aluno</a>
-			</h3>
-		</div>
+		<form action='<c:url value="/aluno/salvar" /> ' method="post">
 
-		<table class="table table-striped">
+			<input type="hidden" name="codigo" value="${aluno.codigo}">
 
-			<thead>
-				<tr>
-					<th>Código</th>
-					<th>Nome</th>
-					<th>Email</th>
-					<th>#</th>
-				</tr>
+			<div class="card">
+				<div class="card-header"></div>
+				<div class="card-body">
+					<h5 class="card-title">${aluno.nome}</h5>
+					<p class="card-text">${aluno.email}</p>
+				</div>
+			</div>
 
-			</thead>
 
-			<tbody>
-			  	 <c:forEach var="aluno" items="${alunos}" >   
+
+			<table class="table table-striped">
+
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>#</th>
+					</tr>
+
+				</thead>
+
+				<tbody>
+					<c:forEach var="turma" items="${turmas}">
 						<tr>
-							<td> ${aluno.codigo}  </td>
-							<td>${aluno.nome}</td>
-							<td>${aluno.email}</td>
-							<td>
-							
-							<a href='<c:url value="/aluno/formedit/${aluno.codigo}" />' >
-							    <button class="btn btn-primary" type="button" >Editar</button>
+							<td>${turma.codigo}</td>
+							<td>${turma.nome}</td>
+							<td><a
+								href='<c:url value="/turma/formedit/${turma.codigo}" />'>
+									<button class="btn btn-primary" type="button">Inscrever</button>
 							</a> 
-							
-							<a href='<c:url value="/aluno/inscricao/${aluno.codigo}" />' >
-							    <button class="btn btn-success" type="button" >Inscricao</button>
-							</a> 
-							
-							<a href="#">
-							    <button class="btn btn-danger" type="button" >Excluir</button>
-							</a>
-							
 							</td>
 						</tr>
-				</c:forEach>
+					</c:forEach>
 
 
-			</tbody>
+				</tbody>
 
-		</table>
+			</table>
 
-
-
+		</form>
 
 	</div>
+
+
 
 
 
