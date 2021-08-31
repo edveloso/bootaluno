@@ -14,7 +14,6 @@ import br.edu.infnet.bootaluno.modelo.Aluno;
 import br.edu.infnet.bootaluno.modelo.Turma;
 import br.edu.infnet.bootaluno.service.AlunoService;
 import br.edu.infnet.bootaluno.service.TurmaService;
-import net.bytebuddy.matcher.ModifierMatcher.Mode;
 
 @Controller
 @RequestMapping(value = "/aluno")
@@ -72,7 +71,7 @@ public class AlunoController {
 			model.addAttribute("aluno", byId.get());
 		}
 		
-		List<Turma> turmas = turmaService.listAll();
+		List<Turma> turmas = turmaService.listByAlunoID(byId.get().getCodigo());
 		model.addAttribute("turmas", turmas);
 		
 		return "aluno/inscricao";

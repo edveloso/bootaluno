@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Aluno {
@@ -18,8 +19,12 @@ public class Aluno {
 	private String email; 
 	
 	
-	@OneToMany
-	@JoinColumn(name = "aluno_id")
+	@ManyToMany
+	@JoinTable(
+			name = "aluno_turma",
+			joinColumns = @JoinColumn(name = "aluno_id"),
+			inverseJoinColumns = @JoinColumn(name="turma_id")
+				)
 	private List<Turma> turmas;
 
 	public Aluno() {

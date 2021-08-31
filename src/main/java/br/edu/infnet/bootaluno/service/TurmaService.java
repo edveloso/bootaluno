@@ -23,6 +23,10 @@ public class TurmaService {
 		return turmaRepository.findAll();
 	}
 
+	public List<Turma> listByAlunoID(Integer codigo) {
+		return turmaRepository.listTurmaByAlunoID(codigo);
+	}
+	
 	public Optional<Turma> getById(Integer codigo) {
 		return turmaRepository.findById(codigo);
 	}

@@ -1,8 +1,11 @@
 package br.edu.infnet.bootaluno.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Turma {
@@ -11,7 +14,10 @@ public class Turma {
 	private Integer codigo;
 	
 	private String nome;
-
+	
+	@ManyToMany(mappedBy = "turmas")
+	private List<Aluno> alunos;
+	
 	public Turma() {
 	}
 	
@@ -33,6 +39,14 @@ public class Turma {
 
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 	
 }
