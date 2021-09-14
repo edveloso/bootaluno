@@ -42,7 +42,7 @@ public class AlunoResource {
 		Optional<Aluno> alunoByID = alunoService.getById(id);
 		return alunoByID.get();
 	}
-	
+	  
 	
 	@DeleteMapping("/{id}")
 	public Aluno deleteAlunoById(@PathVariable  Integer id) {
