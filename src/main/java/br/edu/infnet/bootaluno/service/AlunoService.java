@@ -15,9 +15,9 @@ public class AlunoService {
 	@Autowired
 	private AlunoRepository alunoRepository;
 	
-	public void salvar(Aluno aluno) {
+	public Aluno salvar(Aluno aluno) {
 		//aplicar as regras de negócio
-		alunoRepository.save(aluno);
+		return alunoRepository.save(aluno);
 	}
 
 	public List<Aluno> listAll() {
